@@ -57,11 +57,13 @@ const COURSES = {
 const SHIFT_HOURS = { 'Manhã':3, 'Tarde':4, 'Noite':3 }
 
 const CLASS_SCHEDULES = [
-  { className:'TDS261N', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQARx-dobfIeSaQBaD39EXt0ASnbOAHtX01zHV2mgjbqnD8?e=kXal1u' },
+  { className:'TDS261N (6091)', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQARx-dobfIeSaQBaD39EXt0ASnbOAHtX01zHV2mgjbqnD8?e=kXal1u' },
   { className:'TDS261MPSG', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/dalribeiro_senacrs_com_br/IQCgnRFicskzRLKe-WjL21EpASgKQtTpEdNPLWX728U5mbA?e=k6et2I' },
-  { className:'TDS251N', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQDyen7QuW6KRqBWA_vPWAveAcO8wTPFPLcmqv3FYq-M2yQ?e=186vEY' },
-  { className:'TDS252N', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQCWZTlpUsd3Sby7U-VrBTUWAV2Ig1NuBrdRUE6bQ0Jc1qE?e=hw6nd1' },
-  { className:'TDS261T', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQDpbxdX-utIQb7PINFtYv2KAfsurdDON9TU6V21xOiDcNo?e=VTVu8P' }
+  { className:'TDS251N(5923)', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQDyen7QuW6KRqBWA_vPWAveAcO8wTPFPLcmqv3FYq-M2yQ?e=186vEY' },
+  { className:'TDS252N(5956)', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQCWZTlpUsd3Sby7U-VrBTUWAV2Ig1NuBrdRUE6bQ0Jc1qE?e=hw6nd1' },
+  { className:'TDS261T(6090)', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQDpbxdX-utIQb7PINFtYv2KAfsurdDON9TU6V21xOiDcNo?e=VTVu8P' },
+   { className:'TIA261N(6191)', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/lanogueira_senacrs_com_br/IQC4t1L7t2DWRppsCB8apy0_AckeZmqXU65hGGdLAV-cCho?e=xEe3tP' },
+   { className:'Docentes', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/lanogueira_senacrs_com_br/IQC4t1L7t2DWRppsCB8apy0_AckeZmqXU65hGGdLAV-cCho?e=xEe3tP' }
 ]
 
 const store = (k,v)=>localStorage.setItem(k,JSON.stringify(v))
