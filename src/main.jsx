@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import html2canvas from 'html2canvas'
 import {
   Calculator, GraduationCap, FileCheck2, CalendarDays, Download, Plus,
-  Trash2, RotateCcw, ChevronRight, BookOpenCheck, Clock3, Settings2, Layers3
+  Trash2, RotateCcw, ChevronRight, BookOpenCheck, Clock3, Settings2, Layers3, ExternalLink
 } from 'lucide-react'
 import './styles.css'
 
@@ -55,6 +55,15 @@ const COURSES = {
   TIA: { label:'Técnico em Inteligência Artificial', short:'TIA', ucs:TIA_UCS, moduleTotals:{I:384, II:376, III:440}, total:1200 }
 }
 const SHIFT_HOURS = { 'Manhã':3, 'Tarde':4, 'Noite':3 }
+
+const CLASS_SCHEDULES = [
+  { className:'TDS261N', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQARx-dobfIeSaQBaD39EXt0ASnbOAHtX01zHV2mgjbqnD8?e=kXal1u' },
+  { className:'TDS261MPSG', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/dalribeiro_senacrs_com_br/IQCgnRFicskzRLKe-WjL21EpASgKQtTpEdNPLWX728U5mbA?e=k6et2I' },
+  { className:'TDS251N', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQDyen7QuW6KRqBWA_vPWAveAcO8wTPFPLcmqv3FYq-M2yQ?e=186vEY' },
+  { className:'TDS252N', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQCWZTlpUsd3Sby7U-VrBTUWAV2Ig1NuBrdRUE6bQ0Jc1qE?e=hw6nd1' },
+  { className:'TDS261T', url:'https://senacrs365-my.sharepoint.com/:x:/g/personal/vbvasconcellos_senacrs_com_br/IQDpbxdX-utIQb7PINFtYv2KAfsurdDON9TU6V21xOiDcNo?e=VTVu8P' }
+]
+
 const store = (k,v)=>localStorage.setItem(k,JSON.stringify(v))
 const load = (k,d)=>{ try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } }
 
@@ -131,12 +140,13 @@ function App(){
         <button className={tab==='calculo'?'active':''} onClick={()=>setTab('calculo')}><Calculator/>Carga horária</button>
         <button className={tab==='aproveitamento'?'active':''} onClick={()=>setTab('aproveitamento')}><FileCheck2/>Aproveitamento</button>
         <button className={tab==='grade'?'active':''} onClick={()=>setTab('grade')}><BookOpenCheck/>Grade curricular</button>
+        <button className={tab==='cronogramas'?'active':''} onClick={()=>setTab('cronogramas')}><CalendarDays/>Cronogramas das turmas</button>
       </nav>
       <div className="sidebar-note"><Settings2/><span>Dados salvos automaticamente no navegador.</span></div>
     </aside>
 
     <main>
-      <header className="topbar"><div><span className="eyebrow">SISTEMA DE COORDENAÇÃO</span><h1>{tab==='calculo'?'Planejamento de encontros':tab==='aproveitamento'?'Aproveitamento de estudos':'Grade curricular'}</h1></div><div className="course-switch">{Object.entries(COURSES).map(([k])=><button key={k} className={course===k?'on':''} onClick={()=>setCourse(k)}>{k}</button>)}</div></header>
+      <header className="topbar"><div><span className="eyebrow">SISTEMA DE COORDENAÇÃO</span><h1>{tab==='calculo'?'Planejamento de encontros':tab==='aproveitamento'?'Aproveitamento de estudos':tab==='grade'?'Grade curricular':'Cronogramas das turmas'}</h1></div><div className="course-switch">{Object.entries(COURSES).map(([k])=><button key={k} className={course===k?'on':''} onClick={()=>setCourse(k)}>{k}</button>)}</div></header>
 
       {tab==='calculo' && <section>
         <div className="hero-grid">
@@ -208,6 +218,13 @@ function App(){
             <div className="signature"><div className="signature-line"></div><strong>Msc. Dalvana Ribeiro</strong><span>Coordenadora dos Cursos de Tecnologia</span></div>
             <div className="report-footer">Parecer gerado pelo sistema CoordTech · {new Date().toLocaleDateString('pt-BR')}</div>
           </div>
+        </div>
+      </section>}
+
+      {tab==='cronogramas' && <section>
+        <div className="card history-card">
+          <div className="card-head"><div><h2>Cronogramas das turmas TDS</h2><p>Acesso rápido às planilhas oficiais de cronograma no SharePoint.</p></div></div>
+          <div className="history-list">{CLASS_SCHEDULES.map(item=><div className="history-row" key={item.className}><div className="code-pill">{item.className}</div><div className="grow"><strong>Curso Técnico em Desenvolvimento de Sistemas</strong><small>Clique para abrir o cronograma da turma em uma nova aba.</small></div><a className="primary schedule-link" href={item.url} target="_blank" rel="noopener noreferrer"><ExternalLink/>Abrir cronograma</a></div>)}</div>
         </div>
       </section>}
 
