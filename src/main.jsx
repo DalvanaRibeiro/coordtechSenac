@@ -2515,4 +2515,4 @@ createRoot(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-) tire as cores e adicione na ultima parte tire o coordtech do cabeçalho
+) 
